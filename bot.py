@@ -37,7 +37,7 @@ while True:
 		else:
 			if latestMsg.text.split(" ")[0] == "amlookup":
 				productNo = latestMsg.text.split(" ")[1]
-				part = andymark_item(int(productNo))
+				part = andymark_item(productNo)
 				if part:
 					print(part)
 					bot.post("The item you looked up is a "+part[1]+". It costs "+part[2]+".")
