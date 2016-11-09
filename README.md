@@ -5,3 +5,5 @@ Bot to remind members of meetings and perform various commands. Will probably ru
 Uses:
 * GroupyAPI
 * BeautifulSoup
+
+I have added a requirements.txt so you can just cd to this repo, then run `pip install -r requirements.txt`
