@@ -31,7 +31,7 @@ def andymark_item(partnumber):
 while True:
 	latestMsg = group.messages().newest
 	if latestMsg != oldMsg:
-		print(latestMsg)
+		#print(latestMsg)
 		if latestMsg.text == "Hi bot!":
 			bot.post("Hi, "+latestMsg.name)
 		else:
