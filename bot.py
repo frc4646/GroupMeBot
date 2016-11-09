@@ -44,7 +44,7 @@ while True:
 					bot.post("The item you looked up is a "+part[1]+". It costs "+part[2]+".")
 				else:
 					bot.post("Item not found.")
-			else if cmdname == "!nextmeeting":
+			elif cmdname == "!nextmeeting":
 				bot.post("Meetings are held at 6:30 on Mondays and at 12:00 on Saturdays!")
 				#TODO: combine this with a google calendar for cases such as the FTC events and build season
 		oldMsg = latestMsg

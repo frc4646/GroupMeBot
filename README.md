@@ -9,5 +9,6 @@ Uses:
 I have added a requirements.txt so you can just cd to this repo, then run `pip install -r requirements.txt`
 
 Current Commands:
-* amlookup [part #]: Lookup a part on AndyMark
+* !amlookup [part #]: Lookup a part on AndyMark
+* !nextmeeting: Find out when the next meeting is (WIP)
 * Hi Bot!: Say hello to the Bot
