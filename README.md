@@ -5,3 +5,7 @@ Bot to remind members of meetings and perform various commands. Will probably ru
 Uses:
 * GroupyAPI
 * BeautifulSoup
+
+Current Commands:
+* amlookup [part #]: Lookup a part on AndyMark
+* Hi Bot!: Say hello to the Bot
