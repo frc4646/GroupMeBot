@@ -45,7 +45,10 @@ while True:
 				else:
 					bot.post("Item not found.")
 			elif cmdname == "!nextmeeting":
-				bot.post("Meetings are held at 6:30 on Mondays and at 12:00 on Saturdays!")
+				if int(time.strftime("%m")) < 3:
+					bot.post("Meetindgs are held at 6:30 PM every weekday and at 9:00 AM on Saturdays!")
+				else:
+					bot.post("Meetings are held at 6:30 PM on Mondays and at 12:00 PM on Saturdays!")
 				#TODO: combine this with a google calendar for cases such as the FTC events and build season
 		oldMsg = latestMsg
 	time.sleep(2)
