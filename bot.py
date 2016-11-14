@@ -45,10 +45,18 @@ while True:
 				else:
 					bot.post("Item not found.")
 			elif cmdname == "!nextmeeting":
-				if int(time.strftime("%m")) < 3:
+				if int(time.strftime("%m")) <= 3:
 					bot.post("Meetindgs are held at 6:30 PM every weekday and at 9:00 AM on Saturdays!")
 				else:
 					bot.post("Meetings are held at 6:30 PM on Mondays and at 12:00 PM on Saturdays!")
 				#TODO: combine this with a google calendar for cases such as the FTC events and build season
+			elif cmdname == "!zesty": #DO NOT DOCUMENT THIS COMMAND EVER
+				bot.post("ayy lmao")
+			elif cmdname == "!about":
+				bot.post("For more information, visit https://github.com/frc4646/GroupMeBot")
+			elif cmdname == "!tba":
+				TeamNo = latestMsg.text.split(" ")[1]
+				bot.post("TBA Link to team: https://thebluealliance.com/team/"+TeamNo)
+				#TODO: let's make it look up the team name through the API
 		oldMsg = latestMsg
 	time.sleep(2)

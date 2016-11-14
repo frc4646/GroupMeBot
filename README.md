@@ -11,4 +11,6 @@ I have added a requirements.txt so you can just cd to this repo, then run `pip i
 Current Commands:
 * !amlookup [part #]: Lookup a part on AndyMark
 * !nextmeeting: Find out when the next meeting is (WIP)
+* !about: Links back here
+* !tba: looks up teams from thebluealliance.com
 * Hi Bot!: Say hello to the Bot
