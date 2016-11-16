@@ -63,7 +63,7 @@ while True:
 				#TODO: combine this with a google calendar for cases such as the FTC events and build season
 			elif cmdname == "!zesty": #DO NOT DOCUMENT THIS COMMAND EVER
 				bot.post("ayy lmao")
-			elif cmdname == "!about":
+			elif cmdname == "!about" or cmdname == "!?" or cmdname == "!help":
 				bot.post("For more information, visit https://github.com/frc4646/GroupMeBot")
 			elif cmdname == "!tba":
 				teamNo = latestMsg.text.split(" ")[1]
