@@ -4,6 +4,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import urllib
+import json
 
 bot = Bot.list().first
 groups = groupy.Group.list()
@@ -27,6 +28,16 @@ def andymark_item(partnumber):
 		return([url, name, money])
 		#print(re.sub(r'\([^)]*\)', '', soup.title.get_text())) #kill the parenthesis
 		#print(float(price[0].get_text()))
+
+def tbaGetName(team):
+	#try:
+	#url = "https://www.thebluealliance.com/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
+	#print(url)
+	#response = urllib.request.urlopen(url)
+	#data = json.loads(response.read())
+	#return data['nickname']
+	#except:
+	return(None)
 
 while True:
 	latestMsg = group.messages().newest
@@ -55,8 +66,12 @@ while True:
 			elif cmdname == "!about":
 				bot.post("For more information, visit https://github.com/frc4646/GroupMeBot")
 			elif cmdname == "!tba":
-				TeamNo = latestMsg.text.split(" ")[1]
-				bot.post("TBA Link to team: https://thebluealliance.com/team/"+TeamNo)
-				#TODO: let's make it look up the team name through the API
+				teamNo = latestMsg.text.split(" ")[1]
+				teamName = tbaGetName(teamNo)
+				if teamName:
+					bot.post("TBA Link to team "+teamNo+", "+teamName+": https://thebluealliance.com/team/"+teamNo)
+				else:
+					bot.post("TBA Link to team: https://thebluealliance.com/team/"+teamNo)
+				#TODO: let's make it look up the team name through the API AND WORK
 		oldMsg = latestMsg
 	time.sleep(2)
