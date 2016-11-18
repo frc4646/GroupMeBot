@@ -4,6 +4,7 @@ import time
 from bs4 import BeautifulSoup
 import re
 import urllib
+import http
 import json
 
 bot = Bot.list().first
@@ -15,7 +16,7 @@ oldMsg = ""
 
 def andymark_item(partnumber):
 	url = 'http://www.andymark.com/product-p/am-'+str(partnumber)+'.htm'
-	r = urllib.request.urlopen(url).read()
+	r = urllib.request.urlopen(url).read() #TODO: Change this to use http.client so we don't have 2 libraries doing the same thing
 	soup = BeautifulSoup(r, "html.parser")
 	price = soup.find_all("span", itemprop="price")
 	if soup.title.get_text()=="AndyMark Robot Parts Kits Mecanum Omni Wheels":
@@ -30,14 +31,19 @@ def andymark_item(partnumber):
 		#print(float(price[0].get_text()))
 
 def tbaGetName(team):
-	#try:
-	#url = "https://www.thebluealliance.com/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
-	#print(url)
-	#response = urllib.request.urlopen(url)
-	#data = json.loads(response.read())
-	#return data['nickname']
-	#except:
-	return(None)
+	# try:
+	url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
+	print(url)
+	c = http.client.HTTPSConnection("www.thebluealliance.com")
+	c.request("GET", url)
+	response = c.getresponse()
+	print(response.read())
+	teamData=response.read().decode("utf-8")
+	print(teamData)
+	data = json.loads(teamData)
+	return data['nickname']
+	# except:
+	# return(None)
 
 while True:
 	latestMsg = group.messages().newest
