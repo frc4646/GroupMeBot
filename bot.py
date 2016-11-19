@@ -17,7 +17,10 @@ oldMsg = ""
 def andymark_item(partnumber):
 	url = 'http://www.andymark.com/product-p/am-'+str(partnumber)+'.htm'
 	r = urllib.request.urlopen(url).read() #TODO: Change this to use http.client so we don't have 2 libraries doing the same thing
-	soup = BeautifulSoup(r, "html.parser")
+	try:
+		soup = BeautifulSoup(r, "lxml")
+	except:
+		soup = BeautifulSoup(r, "html.parser")
 	price = soup.find_all("span", itemprop="price")
 	if soup.title.get_text()=="AndyMark Robot Parts Kits Mecanum Omni Wheels":
 		return(None) #404 checking

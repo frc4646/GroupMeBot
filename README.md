@@ -4,7 +4,8 @@ Bot to remind members of meetings and perform various commands. Will probably ru
 
 Uses:
 * GroupyAPI
-* BeautifulSoup
+* BeautifulSoup  
+You can also install the lxml parser with `apt-get install python-lxml` if you want, but the program will use just Python's built in HTML parser if you don't have it
 
 I have added a requirements.txt so you can just cd to this repo, then run `pip install -r requirements.txt`
 
