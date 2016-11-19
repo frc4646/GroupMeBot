@@ -31,19 +31,18 @@ def andymark_item(partnumber):
 		#print(float(price[0].get_text()))
 
 def tbaGetName(team):
-	# try:
-	url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
-	print(url)
-	c = http.client.HTTPSConnection("www.thebluealliance.com")
-	c.request("GET", url)
-	response = c.getresponse()
-	print(response.read())
-	teamData=response.read().decode("utf-8")
-	print(teamData)
-	data = json.loads(teamData)
-	return data['nickname']
-	# except:
-	# return(None)
+	try:
+		url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
+		print(url)
+		c = http.client.HTTPSConnection("www.thebluealliance.com")
+		c.request("GET", url)
+		response = c.getresponse()
+		teamData = response.read().decode("utf-8")
+		print(teamData)
+		data = json.loads(teamData)
+		return data['nickname']
+	except:
+		return(None)
 
 while True:
 	latestMsg = group.messages().newest
