@@ -6,6 +6,10 @@ import re
 import urllib
 import http
 import json
+import hashlib
+
+ADMIN_NAME_HASH = '8dd98121c35203a72c2c8e84340b5760' #MD5 hash of the bot admin's name, they have the power to !kill
+#TODO: move this to a config file along with the TBA app id?
 
 bot = Bot.list().first
 groups = groupy.Group.list()
@@ -80,5 +84,11 @@ while True:
                     bot.post("TBA Link to team "+teamNo+", "+teamName+": https://thebluealliance.com/team/"+teamNo)
                 else:
                     bot.post("TBA Link to team: https://thebluealliance.com/team/"+teamNo)
+            elif cmdname == "!kill":
+                m = hashlib.md5(latestMsg.name.encode("utf-8","ignore")).hexdigest()
+                print(m)
+                if m == ADMIN_NAME_HASH:
+                    bot.post("Shutting down")
+                    exit()
         oldMsg = latestMsg
     time.sleep(2)
