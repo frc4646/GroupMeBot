@@ -7,9 +7,13 @@ import urllib
 import http
 import json
 import hashlib
+import configparser
 
-ADMIN_NAME_HASH = '8dd98121c35203a72c2c8e84340b5760' #MD5 hash of the bot admin's name, they have the power to !kill
-#TODO: move this to a config file along with the TBA app id?
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+ADMIN_NAME_HASH = config['DEFAULT']['AdminNameHash'] #MD5 hash of the bot admin's name, they have the power to !kill
+TBA_APP_ID = config['DEFAULT']['TBAAppID']
 
 bot = Bot.list().first
 groups = groupy.Group.list()
@@ -39,7 +43,7 @@ def andymark_item(partnumber):
 
 def tbaGetName(team):
     try:
-        url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id=frc4646:GroupMeBot:v01"
+        url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id="+TBA_APP_ID
         print(url)
         c = http.client.HTTPSConnection("www.thebluealliance.com")
         c.request("GET", url)
