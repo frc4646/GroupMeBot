@@ -17,4 +17,5 @@ Current Commands:
 * !nextmeeting: Find out when the next meeting is (WIP)
 * !about: Links back here
 * !tba: looks up teams from thebluealliance.com
+* !kill: Kill the bot (admin only)
 * Hi Bot!: Say hello to the Bot

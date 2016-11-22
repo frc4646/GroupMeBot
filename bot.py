@@ -14,11 +14,12 @@ config.read('config.ini')
 
 ADMIN_NAME_HASH = config['DEFAULT']['AdminNameHash'] #MD5 hash of the bot admin's name, they have the power to !kill
 TBA_APP_ID = config['DEFAULT']['TBAAppID']
+GROUP_NAME = config['DEFAULT']['GroupName']
 
 bot = Bot.list().first
 groups = groupy.Group.list()
 for i in groups:
-    if i.name == "TrunkBot Test":
+    if i.name == GROUP_NAME:
         group=i
 oldMsg = ""
 
@@ -49,7 +50,7 @@ def tbaGetName(team):
         c.request("GET", url)
         response = c.getresponse()
         teamData = response.read().decode("utf-8")
-        print(teamData)
+        #print(teamData)
         data = json.loads(teamData)
         return data['nickname']
     except:
@@ -94,5 +95,7 @@ while True:
                 if m == ADMIN_NAME_HASH:
                     bot.post("Shutting down")
                     exit()
+                else:
+                    bot.post("You're not an admin.")
         oldMsg = latestMsg
     time.sleep(2)
