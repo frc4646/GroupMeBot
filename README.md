@@ -18,4 +18,5 @@ Current Commands:
 * !about: Links back here
 * !tba: looks up teams from thebluealliance.com
 * !kill: Kill the bot (admin only)
+* !manual: Links the game manual
 * Hi Bot!: Say hello to the Bot

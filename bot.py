@@ -97,5 +97,7 @@ while True:
                     exit()
                 else:
                     bot.post("You're not an admin.")
+            elif cmdname == "!manual" or cmdname == "!rtfm" or cmdname == "!thegame":
+                bot.post("Manual is here: http://www.firstinspires.org/resource-library/frc/competition-manual-qa-system")
         oldMsg = latestMsg
     time.sleep(2)
