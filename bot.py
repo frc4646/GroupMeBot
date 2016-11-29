@@ -42,6 +42,21 @@ def andymark_item(partnumber):
         #print(re.sub(r'\([^)]*\)', '', soup.title.get_text())) #kill the parenthesis
         #print(float(price[0].get_text()))
 
+def vex_item(partnumber):
+    url = 'http://www.vexrobotics.com/'+str(partnumber)+'.html'
+    r = urllib.request.urlopen(url).read() #TODO: Change this to use http.client so we don't have 2 libraries doing the same thing
+    try:
+        soup = BeautifulSoup(r, "lxml")
+    except:
+        soup = BeautifulSoup(r, "html.parser")
+    price = soup.find_all("span", class_="price")
+    if soup.title.get_text()=="404: Page Not Found  - VEX Robotics":
+        return(None) #404 checking
+    else:
+        name = re.sub(r'\([^)]*\)', '', soup.title.get_text())
+        money = price[0].get_text()
+        return([url, name, money])
+
 def tbaGetName(team):
     try:
         url = "/api/v2/team/frc"+str(team)+"?X-TBA-App-Id="+TBA_APP_ID
@@ -99,5 +114,13 @@ while True:
                     bot.post("You're not an admin.")
             elif cmdname == "!manual" or cmdname == "!rtfm" or cmdname == "!thegame":
                 bot.post("Manual is here: http://www.firstinspires.org/resource-library/frc/competition-manual-qa-system")
+            elif cmdname == "!vexlookup":
+                productNo = latestMsg.text.split(" ")[1]
+                part = vex_item(productNo)
+                if part:
+                    #print(part)
+                    bot.post("The item you looked up is a "+part[1].split(" - ")[0]+". It costs "+part[2]+".")
+                else:
+                    bot.post("Item not found.")
         oldMsg = latestMsg
     time.sleep(2)

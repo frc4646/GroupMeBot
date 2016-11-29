@@ -19,4 +19,5 @@ Current Commands:
 * !tba: looks up teams from thebluealliance.com
 * !kill: Kill the bot (admin only)
 * !manual: Links the game manual
+* !vexlookup [part #]: vex part lookup
 * Hi Bot!: Say hello to the Bot
