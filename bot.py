@@ -83,7 +83,7 @@ while True:
                 productNo = latestMsg.text.split(" ")[1]
                 part = andymark_item(productNo)
                 if part:
-                    print(part)
+                    #print(part)
                     bot.post("The item you looked up is a "+part[1]+". It costs "+part[2]+".")
                 else:
                     bot.post("Item not found.")
@@ -100,7 +100,10 @@ while True:
             elif cmdname == "!tba":
                 teamNo = latestMsg.text.split(" ")[1]
                 teamName = tbaGetName(teamNo)
-                if teamName:
+                if teamNo == "8":
+                    bot.post("TBA Link to team #8, The 8th team, Team \"The Ocho\" 8: https://thebluealliance.com/team/8")
+                    bot.post("Wait, when did they change their name?")
+                elif teamName:
                     bot.post("TBA Link to team "+teamNo+", "+teamName+": https://thebluealliance.com/team/"+teamNo)
                 else:
                     bot.post("TBA Link to team: https://thebluealliance.com/team/"+teamNo)
@@ -114,7 +117,7 @@ while True:
                     bot.post("You're not an admin.")
             elif cmdname == "!manual" or cmdname == "!rtfm" or cmdname == "!thegame":
                 bot.post("Manual is here: http://www.firstinspires.org/resource-library/frc/competition-manual-qa-system")
-            elif cmdname == "!vexlookup":
+            elif cmdname == "!vexlookup": #
                 productNo = latestMsg.text.split(" ")[1]
                 part = vex_item(productNo)
                 if part:
