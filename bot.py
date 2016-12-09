@@ -73,6 +73,7 @@ def tbaGetName(team):
 
 def reminder():
     #TODO: AUTOMATE THIS
+    print("this thing doesn't even work yet, why are you calling it")
 
 while True:
     latestMsg = group.messages().newest
