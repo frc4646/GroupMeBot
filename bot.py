@@ -71,6 +71,9 @@ def tbaGetName(team):
     except:
         return(None)
 
+def reminder():
+    #TODO: AUTOMATE THIS
+
 while True:
     latestMsg = group.messages().newest
     if latestMsg != oldMsg:
@@ -88,10 +91,16 @@ while True:
                 else:
                     bot.post("Item not found.")
             elif cmdname == "!nextmeeting":
-                if int(time.strftime("%m")) <= 3:
-                    bot.post("Meetindgs are held at 6:30 PM every weekday and at 9:00 AM on Saturdays!")
+                if int(time.strftime("%W")) <= 12:
+                    if int(time.strftime("%w")) <= 5:
+                        bot.post("The next meeting will be held TODAY and every weekday at 6:30 PM!")
+                    if int(time.strftime("%w")) == 6:
+                        bot.post("The next meeting will be held TODAY and every Saturday at 12:00 PM!")
                 else:
-                    bot.post("Meetings are held at 6:30 PM on Mondays and at 12:00 PM on Saturdays!")
+                    if int(time.strftime("%w")) <= 1:
+                        bot.post("The next meeting will be on Monday at 6:30 PM!")
+                    else:
+                        bot.post("The next meeting will be on Saturday at 12 PM!")
                 #TODO: combine this with a google calendar for cases such as the FTC events and build season
             elif cmdname == "!zesty": #DO NOT DOCUMENT THIS COMMAND EVER
                 bot.post("ayy lmao")
