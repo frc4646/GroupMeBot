@@ -93,9 +93,14 @@ while True:
                     bot.post("Item not found.")
             elif cmdname == "!nextmeeting":
                 if int(time.strftime("%W")) <= 12:
-                    if int(time.strftime("%w")) <= 5:
+                    if int(time.strftime("%W")) = 1:
+                        bot.post("Kickoff is Saturday! G E T H Y P E")
+                        bot.post("Also be sure to download the encrypted manual when it comes out!")
+                    else if int(time.strftime("%w")) == 0:
+                        bot.post("The next meeting is held Monday at 6:30 PM!")
+                    else if int(time.strftime("%w")) <= 5:
                         bot.post("The next meeting will be held TODAY and every weekday at 6:30 PM!")
-                    if int(time.strftime("%w")) == 6:
+                    else if int(time.strftime("%w")) == 6:
                         bot.post("The next meeting will be held TODAY and every Saturday at 12:00 PM!")
                 else:
                     if int(time.strftime("%w")) <= 1:
