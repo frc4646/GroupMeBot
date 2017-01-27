@@ -45,7 +45,7 @@ while True:
                     elif int(time.strftime("%w")) <= 5:
                         bot.post("The next meeting will be held TODAY and every weekday at 6:30 PM!")
                     elif int(time.strftime("%w")) == 6:
-                        bot.post("The next meeting will be held TODAY and every Saturday at 12:00 PM!")
+                        bot.post("The next meeting will be held TODAY and every Saturday at 10:00 AM!")
                 else:
                     if int(time.strftime("%w")) <= 1:
                         bot.post("The next meeting will be on Monday at 6:30 PM!")
@@ -84,5 +84,7 @@ while True:
                     bot.post("The item you looked up is a "+part[1].split(" - ")[0]+". It costs "+part[2]+".")
                 else:
                     bot.post("Item not found.")
+            elif cmdname == "!rollout":
+                bot.post("Optimus Remind is now officially rolling out! Check https://github.com/frc4646/GroupMeBot/blob/master/README.md for a command list!")
         oldMsg = latestMsg
     time.sleep(2)
